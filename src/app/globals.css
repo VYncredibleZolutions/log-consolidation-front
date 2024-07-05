@@ -57,3 +57,81 @@ body {
 .react-datepicker-popper {
   z-index: 99 !important;
 }
+
+.react-datepicker__header {
+  background-color: #2c2c2c !important; /* Titulo do Calendario */
+  border: none !important;
+  box-shadow: 0px 0px 28px -10px black;
+  border-radius: 0.2rem 0.2rem 0 0 !important;
+}
+
+.react-datepicker__month-container {/* Base do Calendario */
+  /* background-color: #6a6a6a !important;  */
+}
+.react-datepicker__month {
+  background-color: #6a6a6a !important; 
+  margin: 0 !important;
+  padding: 0.4rem;
+  border-radius: 0 0 0.2rem 0.2rem;
+}
+
+.react-datepicker__navigation-icon 
+.react-datepicker__navigation--next{
+  color: white !important; /* Letras do Calendario */
+  /* background-color: chartreuse !important;  */
+}
+
+.react-datepicker__current-month {
+  color: white !important; /* Letras do Calendario */
+}
+
+.react-datepicker__day-name, 
+.react-datepicker__day, 
+.react-datepicker__time-name {
+  color: white !important; /* Letras do Calendario */
+}
+
+.react-datepicker__day--selected, 
+.react-datepicker__day--in-selecting-range, 
+.react-datepicker__day--in-range, 
+.react-datepicker__month-text--selected, 
+.react-datepicker__month-text--in-selecting-range, 
+.react-datepicker__month-text--in-range, 
+.react-datepicker__quarter-text--selected, 
+.react-datepicker__quarter-text--in-selecting-range, 
+.react-datepicker__quarter-text--in-range, 
+.react-datepicker__year-text--selected, 
+.react-datepicker__year-text--in-selecting-range, 
+.react-datepicker__year-text--in-range {
+  background-color: #68F768 !important; /* Dias selecionados do Calendario */
+  color: black !important;
+}
+
+.react-datepicker__day--keyboard-selected, 
+.react-datepicker__month-text--keyboard-selected, 
+.react-datepicker__quarter-text--keyboard-selected, 
+.react-datepicker__year-text--keyboard-selected {
+  background-color: #8CAA8C !important; /* Dia inicial Selecionado do Calendario */
+
+}
+
+.react-datepicker__day:hover, 
+.react-datepicker__month-text:hover, 
+.react-datepicker__quarter-text:hover, 
+.react-datepicker__year-text:hover {
+  background-color: #4BA84B !important; /* Hover dos dias do Calendario */
+}
+
+.react-datepicker-popper[data-placement^=bottom] 
+.react-datepicker__triangle {
+  color: #2c2c2c !important; /* Triangulo do Calendario */ 
+  fill: #2c2c2c !important; /* Triangulo do Calendario */
+}
+.react-datepicker-popper 
+.react-datepicker__triangle {
+  stroke: #2c2c2c !important; /* Triangulo do Calendario */
+}
+
+.react-datepicker {
+  border: #2c2c2c !important; /* Triangulo do Calendario */
+}

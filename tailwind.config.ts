@@ -18,7 +18,8 @@ const config: Config = {
         "second": "#4BA84B",
         "disabled": "#8CAA8C",
 
-        "gray-6": "#191919",
+        "gray-7": "#191919",
+        "gray-6": "#1e1e1e",
         "gray-5": "#2c2c2c",
         "gray-4": "#3f3f3f",
         "gray-3": "#545454",
