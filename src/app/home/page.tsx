@@ -181,8 +181,8 @@ export default function HomePage() {
                     :
                     <InformationsComponent dataListMetrics={dataListMetrics} key={`key-metrics-${filter?.start_date}-${filter?.end_date}`} />
             }
-            <div className="w-full flex flex-col gap-4">
-                <div className="bg-gray-6 rounded-md p-4 w-full flex justify-between items-center">
+            <div className="w-full flex flex-col  gap-4">
+                <div className="bg-gray-6 rounded-md p-4 w-full flex justify-between items-center flex-col sm:flex-row gap-3">
                     <DatePicker
                         onChange={onChange}
                         startDate={startDate}
@@ -310,7 +310,7 @@ function BarChartComponent({
 function InformationsComponent({ dataListMetrics }: { dataListMetrics?: ResponseMetricsFindAllDto[] }) {
     return (
         <div className="w-full flex gap-3">
-            <span className="rounded-md grid grid-cols-3 w-full gap-2">
+            <span className="rounded-md grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-3 w-full gap-2">
                 <div className="w-full grid grid-cols-1 gap-2">
                     <div className="bg-gray-6 rounded-md p-4">
                         <h2 className="w-full text-center font-semibold border-b border-primary pb-2 text-xl">
@@ -369,7 +369,7 @@ function InformationsComponent({ dataListMetrics }: { dataListMetrics?: Response
                 </div>
                 {
                     dataListMetrics && dataListMetrics.length > 2 &&
-                    <div className="bg-gray-6 w-full rounded-md p-2 col">
+                    <div className="bg-gray-6 w-full rounded-md p-2 col-span-1 lg:col-span-2 xl:col-span-1">
                         <BarChartComponent
                             listLabel={dataListMetrics ? dataListMetrics.map((item) => `${item.day.toString().padStart(2, '0')}/${item.month.toLowerCase().substring(0, 3)}/${item.year}`).reverse() : []}
                             listData={dataListMetrics ? dataListMetrics.map((item) => item.count_access).reverse() : []}
