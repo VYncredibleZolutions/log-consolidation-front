@@ -10,9 +10,13 @@ export class UserApi {
 
     async findAll({ page = 0, limit = 5 }: BodyUserFindAllDto): Promise<ResponseUserFindAllDto> {
         try {
+
             const response = await apiClient.post(`${this.findAllUrl}`, {
-                page,
-                limit
+                user: 'user',
+                params: {
+                    page,
+                    limit
+                }
             });
             return response.data;
         } catch (err) {

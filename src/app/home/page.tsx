@@ -1,6 +1,8 @@
 'use client'
 import LineChart from "@/components/Chart.compontent";
 import { TableComponent, TableComponentDto } from "@/components/Table.component";
+import { faFaceMeh } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ClearIcon from '@mui/icons-material/Clear';
 import HorizontalRuleIcon from '@mui/icons-material/HorizontalRule';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -120,7 +122,7 @@ export default function HomePage() {
         isError: isErrorMetrics,
         data: dataListMetrics,
         refetch: refetchMetrics,
-        isFetched: isFetchedMetrics
+        isFetching: isFetchingMetrics
     } = useQuery({
         queryKey: [`find-all-metrics`, filter],
         queryFn: () => handleFindMetrics(),
@@ -128,7 +130,7 @@ export default function HomePage() {
         // retry: 3
     });
 
-    const handleFindLogsPharma = async () => {
+    const handleFindLogsUser = async () => {
         try {
             apiHome = new UserApi();
             const response = await apiHome.findAll({
@@ -146,10 +148,10 @@ export default function HomePage() {
         isError,
         data: dataList,
         refetch,
-        isFetched
+        isFetching
     } = useQuery({
-        queryKey: [`find-all-epharma`, page, limit],
-        queryFn: () => handleFindLogsPharma(),
+        queryKey: [`find-all-users`, page, limit],
+        queryFn: () => handleFindLogsUser(),
         refetchOnWindowFocus: false,
         // retry: 3
     });
@@ -163,19 +165,22 @@ export default function HomePage() {
         setLimit(limit || 5)
     }
 
-    if (isLoadingMetrics) return (<Loading />)
-    // if (isError) return (
-    //     <div className="w-full h-52 flex justify-center items-center flex-col gap-4">
-    //         <FontAwesomeIcon className="text-4xl" icon={faFaceMeh} />
-    //         <div>
-    //             Não foi possivel buscar os dados
-    //         </div>
-
-    //     </div>
-    // )
+    if (isLoadingMetrics || isLoading || isFetching || isFetchingMetrics) return (<Loading />)
     return (
         <div className="p-4 flex gap-4 flex-col">
-            <InformationsComponent dataListMetrics={dataListMetrics} key={`key-metrics-${filter?.start_date}-${filter?.end_date}`} />
+            {
+
+                isErrorMetrics ?
+                    <div className="w-full h-52 flex justify-center items-center flex-col gap-4 bg-gray-6 rounded-md">
+                        <FontAwesomeIcon className="text-4xl" icon={faFaceMeh} />
+                        <div>
+                            Não foi possivel buscar os dados
+                        </div>
+
+                    </div>
+                    :
+                    <InformationsComponent dataListMetrics={dataListMetrics} key={`key-metrics-${filter?.start_date}-${filter?.end_date}`} />
+            }
             <div className="w-full flex flex-col gap-4">
                 <div className="bg-gray-6 rounded-md p-4 w-full flex justify-between items-center">
                     <DatePicker
@@ -207,15 +212,26 @@ export default function HomePage() {
                     </div>
                 </div>
                 <div className="w-full">
-                    <TableComponent
-                        listTableHeaders={columnsName}
-                        valuesObj={dataList?.data || []}
-                        page={page}
-                        limit={limit}
-                        length={dataList?.meta.count_total || 0}
-                        onChangePage={handleChangePage}
-                        onChangeLimit={handleChangeLimit}
-                    />
+                    {
+                        isError ?
+                            <div className="w-full h-52 flex justify-center items-center flex-col gap-4 bg-gray-6 rounded-md">
+                                <FontAwesomeIcon className="text-4xl" icon={faFaceMeh} />
+                                <div>
+                                    Não foi possivel buscar os dados
+                                </div>
+
+                            </div>
+                            :
+                            <TableComponent
+                                listTableHeaders={columnsName}
+                                valuesObj={dataList?.data || []}
+                                page={page}
+                                limit={limit}
+                                length={dataList?.meta.count_total || 0}
+                                onChangePage={handleChangePage}
+                                onChangeLimit={handleChangeLimit}
+                            />
+                    }
                 </div>
             </div>
 
