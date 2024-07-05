@@ -8,7 +8,7 @@ export class UserApi {
         this.findAllUrl = 'user/list'
     }
 
-    async findAll({ page = 0, limit = 5 }: BodyUserFindAllDto): Promise<ResponseUserFindAllDto> {
+    async findAll({ page = 1, limit = 5 }: BodyUserFindAllDto): Promise<ResponseUserFindAllDto> {
         try {
 
             const response = await apiClient.post(`${this.findAllUrl}`, {

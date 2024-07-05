@@ -134,7 +134,7 @@ export default function HomePage() {
         try {
             apiHome = new UserApi();
             const response = await apiHome.findAll({
-                page: page,
+                page: page + 1,
                 limit: limit
             });
             return response;
