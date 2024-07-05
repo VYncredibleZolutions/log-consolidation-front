@@ -2,22 +2,36 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* * {
+  color: white;
+} */
+
+
+.archivo-black-regular {
+  font-family: "Archivo Black", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --foreground-rgb: 50,50,50;
+    --background-start-rgb: 10,10,10;
+    --background-end-rgb: 29,29,29;
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --foreground-rgb: 50,50,50;
+    --background-start-rgb: 10,10,10;
+    --background-end-rgb: 29,29,29;
   }
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb)); */
+  color: white;
   background: linear-gradient(
       to bottom,
       transparent,
@@ -30,4 +44,16 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+} 
+
+.Mui-disabled {
+  background: 'red' !important;
+  color: 'blue';
+}
+.Mui-focusVisible {
+  background-color: transparent !important;
+}
+
+.react-datepicker-popper {
+  z-index: 99 !important;
 }
