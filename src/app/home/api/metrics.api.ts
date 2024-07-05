@@ -1,4 +1,4 @@
-import { apiClient } from "@/utils/axios";
+import { apiMetrics } from "@/utils/axios";
 import { BodyMetricsFindAllDto, ResponseMetricsFindAllDto } from "../dto/metrics.dto";
 
 export class MetricsApi {
@@ -10,7 +10,7 @@ export class MetricsApi {
 
     async findAll(body: BodyMetricsFindAllDto): Promise<ResponseMetricsFindAllDto[]> {
         try {
-            const response = await apiClient.post(`${this.findAllUrl}`, body);
+            const response = await apiMetrics.post(`${this.findAllUrl}`, body);
             return response.data;
         } catch (err) {
             throw new Error(`Cannot find logs: ${err}`)
